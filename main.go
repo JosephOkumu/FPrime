@@ -6,19 +6,25 @@ import (
 	"strconv"
 )
 
-func isPrime(nb int) bool {
-	if nb <= 1 {
+func isPrime(num int) bool {
+	if num <= 1 {
 		return false
-	}else if nb == 2 || nb == 3 {
+	}
+	if num <= 3 {
 		return true
 	}
-	for i := 5; i*i <= nb; i+= 6 {
-		if i%2 == 0 || i%3 == 0 {
+	if num%2 == 0 || num%3 == 0 {
+		return false
+	}
+	
+	for i := 5; i*i <= num; i += 6 {
+		if num%i == 0 || num%(i+2) == 0 {
 			return false
 		}
 	}
 	return true
 }
+
 
 func fPrime(nb int) string {
 	slice := []int{}
